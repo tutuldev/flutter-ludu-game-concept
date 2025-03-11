@@ -16,10 +16,30 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text("Dice App"),
       ),
-      body: Row(children: [
-        Expanded(flex: 2, child: Image.asset("assets/2.png"),),
-        Expanded(child: Image.asset("assets/3.png"),),
-      ],),
+      body: Center(
+        child: Row(children: [
+          Expanded(
+            child: InkWell(
+              onTap: (){
+                print("INkwell Tapped");
+              },
+              child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset("assets/2.png"),
+                        ),
+            ),),
+          Expanded(
+            child: GestureDetector(
+              onTap: (){
+                print("GestureDetector Tapped");
+              },
+              child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset("assets/3.png"),
+                        ),
+            ),),
+        ],),
+      ),
     );
   }
 }
