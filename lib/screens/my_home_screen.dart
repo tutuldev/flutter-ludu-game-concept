@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -7,6 +9,9 @@ class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
+
+int leftDice = 1;
+int rightDice = 1;
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
@@ -21,21 +26,29 @@ class _MyHomePageState extends State<MyHomePage> {
           Expanded(
             child: InkWell(
               onTap: (){
-                print("INkwell Tapped");
+                setState(() {
+                  // leftDice=3;
+                  leftDice=Random().nextInt(6)+1; //1 sum for 1-to-6 value
+                  rightDice=Random().nextInt(6)+1;
+                });
+                // print("Inkwell Tapped");
               },
               child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Image.asset("assets/2.png"),
+              child: Image.asset("assets/$leftDice.png"),
                         ),
             ),),
           Expanded(
-            child: GestureDetector(
+            child: InkWell(
               onTap: (){
-                print("GestureDetector Tapped");
+                setState(() {
+                  rightDice=Random().nextInt(6)+1;
+                  leftDice=Random().nextInt(6)+1;
+                });
               },
               child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Image.asset("assets/3.png"),
+              child: Image.asset("assets/$rightDice.png"),
                         ),
             ),),
         ],),
